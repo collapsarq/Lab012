@@ -6,21 +6,24 @@
 Queue::Queue(int s)
 {
     size = s;
-    queue = new int[size];
+    capacity = 2 * size;
+    queue = new int[capacity];
     head = tail = 0;
 }
 
 Queue::Queue()
 {
-    size = 5;
-    queue = new int[size];
+    size = 0;
+    capacity = 1;
+    queue = new int[1];
     head = tail = 0;
 }
 
 Queue::Queue(const Queue& q)
 {
     size = q.size;
-    queue = new int[size];
+    capacity = 2 * size;
+    queue = new int[capacity];
     head = tail = 0;
 }
 
@@ -36,7 +39,7 @@ Queue& Queue :: operator = (Queue& q)
         size = q.size;
     }
     delete[] queue;
-    queue = new int[size];
+    queue = new int[capacity];
     for (int i = 0; i < size; i++)
     {
         if (i < q.size)
@@ -78,11 +81,13 @@ Queue :: ~Queue()
     }
 }
 
-void Queue::set(int index, int value, int& error)
+int Queue::set(int index, int value)
 {
-    if ((index < 0) || (index >= size))
+    if ((index <= 0) || (index > size))
     {
-        error = 1;
+        std::cout << std::endl;
+        std::cout << "Îøèáêà";
+        return -1;   
     }
     else
     {
@@ -90,11 +95,13 @@ void Queue::set(int index, int value, int& error)
     }
 }
 
-int Queue::get(int index, int value, int& error)
+int Queue::get(int index)
 {
-    if ((index < 0) || (index >= size))
+    if ((index <= 0) || (index > size))
     {
-        error = -1;
+        std::cout << std::endl;
+        std::cout << "Îøèáêà";
+        return -1;
     }
     else
     {
@@ -125,5 +132,13 @@ int Queue::back()
 int Queue::front()
 {
     return queue[head + 1];
+}
+int Queue::getsize()
+{
+    return Queue::size;
+}
+int Queue::getcapacity()
+{
+    return Queue::capacity;
 }
 #endif

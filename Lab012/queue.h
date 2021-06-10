@@ -4,11 +4,12 @@
 class Queue {
 
 private:
+	int capacity;
 	int size;
 	int* queue;
-	int head, tail;
 
 public:
+	int head, tail;
 	Queue();
 	Queue(int s);
 	Queue(const Queue& q);
@@ -16,11 +17,13 @@ public:
 	Queue& operator = (Queue& q);
 	void input();
 	void output();
-	void set(int index, int value, int& error);
-	int get(int index, int value, int& error);
+	int set(int index, int value);
+	int get(int index);
 	void push(int num);
 	void pop();
 	int front();
 	int back();
+	int getsize();
+	int getcapacity();
 };
 #endif

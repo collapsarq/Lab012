@@ -13,7 +13,6 @@ int main()
 	q1.input();
 	std::cout << "Очередь: ";
 	q1.output();
-	std::cout << std::endl;
 	std::cout << "Задний элемент:" << std::endl;
 	std::cout << q1.back();
 	std::cout << std::endl;
