@@ -141,4 +141,5 @@ int Queue::getcapacity()
 {
     return Queue::capacity;
 }
+
 #endif
